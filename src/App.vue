@@ -1,13 +1,22 @@
 <template>
   <div class="container">
-    <input v-model="textoParaTraduzir" />
-    <button class="btn" @click="traduzir">TRADUZIR</button>
-    <textarea v-model="textoTraduzido"></textarea>
+    <div>
+      <h2 class="titulo">Testando o google tradutor</h2>
+    </div>
+    <div class="sistema">
+      <input
+        v-model="textoParaTraduzir"
+        placeholder="Digite o texto em Português..."
+      />
+      <button class="btn" @click="traduzir">TRADUZIR</button>
+      <textarea v-model="textoTraduzido"></textarea>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import he from "he";
 
 export default {
   data() {
@@ -27,21 +36,43 @@ export default {
         target: this.idiomaDestino,
       });
 
-      this.textoTraduzido = resposta.data.data.translations[0].translatedText;
+      // this.textoTraduzido = resposta.data.data.translations[0].translatedText;
+      this.textoTraduzido = he.decode(
+        resposta.data.data.translations[0].translatedText
+      );
     },
   },
 };
 </script>
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  justify-content: center;
 }
+
+.titulo {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.sistema {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 input {
   height: 50px;
   width: 300px;
-  margin-top: 200px;
+  margin-top: 100px;
   border-radius: 0.5rem;
   border: 1px solid blue;
 }
@@ -51,7 +82,7 @@ button {
   width: 150px;
   background-color: blue;
   color: white;
-  margin: 30px auto;
+  margin: 30px;
   border: none;
   border-radius: 0.5rem;
   border: 1px solid blue;
