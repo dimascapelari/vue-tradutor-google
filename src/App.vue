@@ -67,7 +67,6 @@ export default {
 }
 
 .sistema {
-  /* align-items: center; */
   display: flex;
   flex-direction: column;
 }
@@ -81,7 +80,6 @@ export default {
 input {
   height: 50px;
   width: 300px;
-  /* margin-top: 100px; */
   border-radius: 0.5rem;
   border: 1px solid blue;
 }
