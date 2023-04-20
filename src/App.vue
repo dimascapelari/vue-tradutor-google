@@ -4,12 +4,14 @@
       <h2 class="titulo">Testando o google tradutor</h2>
     </div>
     <div class="sistema">
+      <label>Digite o texto</label>
       <input
         v-model="textoParaTraduzir"
         placeholder="Digite o texto em Português..."
       />
       <button class="btn" @click="traduzir">TRADUZIR</button>
-      <textarea v-model="textoTraduzido"></textarea>
+      <label>Resultado em Inglês</label>
+      <textarea v-model="textoTraduzido" disabled></textarea>
     </div>
   </div>
 </template>
@@ -61,18 +63,25 @@ export default {
 
 .titulo {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-bottom: 80px;
 }
 
 .sistema {
-  align-items: center;
+  /* align-items: center; */
   display: flex;
   flex-direction: column;
+}
+
+.sistema label {
+  text-align: start;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-bottom: 5px;
 }
 
 input {
   height: 50px;
   width: 300px;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   border-radius: 0.5rem;
   border: 1px solid blue;
 }
@@ -82,7 +91,7 @@ button {
   width: 150px;
   background-color: blue;
   color: white;
-  margin: 30px;
+  margin: 30px auto;
   border: none;
   border-radius: 0.5rem;
   border: 1px solid blue;
